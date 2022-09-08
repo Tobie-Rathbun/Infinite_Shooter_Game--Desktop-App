@@ -30,8 +30,7 @@ class Player:
             dx += -speed_sin
             dy += speed_cos
 
-        self.x += dx
-        self.y += dy
+        self.check_wall_collision(dx, dy)
 
         if keys[pg.K_LEFT]:
             self.angle -= PLAYER_ROT_SPEED * self.game.delta_time
