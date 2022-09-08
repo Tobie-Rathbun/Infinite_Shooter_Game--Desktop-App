@@ -44,7 +44,7 @@ class Player:
     def check_wall_collision(self, dx, dy):
         if self.check_wall(int(self.x + dx), int(self.y)):
             self.x += dx
-        if self.check_wall(int(self.x)):
+        if self.check_wall(int(self.x), int(self.y + dy)):
             self.y += dy
 
     def draw(self):
