@@ -24,11 +24,13 @@ class Game:
         self.object_renderer = ObjectRenderer(self)
         self.raycasting = RayCasting(self)
         self.static_sprite = SpriteObject(self)
+        self.animated_sprite = AnimatedSprite(self)
 
     def update(self):
         self.player.update()
         self.raycasting.update()
         self.static_sprite.update()
+        self.animated_sprite.update()
         pg.display.flip()
         self.delta_time = self.clock.tick(FPS)
         pg.display.set_caption(f'{self.clock.get_fps() :.1f}')
