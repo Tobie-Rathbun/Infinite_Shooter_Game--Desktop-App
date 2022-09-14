@@ -52,6 +52,7 @@ class Game:
             if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
                 pg.quit()
                 sys.exit()
+            self.player.single_fire_event(event)
 
     def run(self):
         while True:

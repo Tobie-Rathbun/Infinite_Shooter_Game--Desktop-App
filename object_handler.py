@@ -10,13 +10,12 @@ class ObjectHandler:
 
         #sprite map
         add_sprite(SpriteObject(game))
-        add_sprite(AnimatedSprite(game))
-        add_sprite(AnimatedSprite(game, pos=(1.5, 1.5)))
-        add_sprite(AnimatedSprite(game, pos=(2.5, 2.5)))
-        add_sprite(AnimatedSprite(game, pos=(3.5, 3.5)))
-        add_sprite(AnimatedSprite(game, pos=(4.5, 4.5)))
-        add_sprite(AnimatedSprite(game, pos=(5.5, 5.5)))
-        add_sprite(AnimatedSprite(game, pos=(6.5, 6.5)))
+        add_sprite(AnimatedSprite(game, pos=(2.99, 1.99)))
+        add_sprite(AnimatedSprite(game, pos=(2.99, 3.5)))
+        add_sprite(AnimatedSprite(game, pos=(2.99, 5.01)))
+        add_sprite(AnimatedSprite(game, pos=(4.05, 3.05)))
+        add_sprite(AnimatedSprite(game, pos=(4.01, 5.01)))
+        #add_sprite(AnimatedSprite(game, pos=(6.5, 6.5)))
         
 
     def update(self):
