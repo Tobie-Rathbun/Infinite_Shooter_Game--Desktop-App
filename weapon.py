@@ -10,7 +10,7 @@ wpn_dir = resource_path("resources/sprites/weapon/shotgun")
 
 
 class Weapon(AnimatedSprite):
-    def __init__(self, game, scale=1, shift=0.4, animation_time=120):
+    def __init__(self, game, scale=0.9, shift=0.6, animation_time=120):
         super().__init__(game=game, scale=scale, shift=shift, animation_time=animation_time)
             #loads other classes init and runs
         self.gun0 = pg.image.load(os.path.join(wpn_dir, "0.png"))
