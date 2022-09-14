@@ -69,7 +69,7 @@ def get_image(sheet, frame, width, height):
         return image
 
 class AnimatedSprite(SpriteObject):
-    def __init__(self, game, pos=(6, 4.5), scale=0.75, shift=0.4, animation_time=120):
+    def __init__(self, game, pos=(6, 4.5), scale=0.25, shift=0.4, animation_time=120):
         super().__init__(game, pos, scale, shift)
         self.animation_time = animation_time
         self.animation_time_prev = pg.time.get_ticks()
@@ -94,6 +94,7 @@ class AnimatedSprite(SpriteObject):
 
     def animate(self, images):
         if self.animation_trigger:
+            self.images.rotate(-1)
             self.image = self.images[0]
 
     def check_animation_time(self):
