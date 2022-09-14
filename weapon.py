@@ -8,9 +8,10 @@ def resource_path(relative_path):
 wpn_dir = resource_path("resources/sprites/weapon/shotgun")
 
 class Weapon(AnimatedSprite):
-    def __init__(self, game, scale=0.25, shift=0.4, animation_time=120):
+    def __init__(self, game, scale=0.5, shift=0.4, animation_time=120):
         super().__init__(game=game, scale=scale, shift=shift, animation_time=animation_time)
         self.gun0 = pg.image.load(os.path.join(wpn_dir, "0.png")).convert()
+        self.gun0.set_colorkey(BLACK)
         self.gun1 = pg.image.load(os.path.join(wpn_dir, "1.png")).convert()
         self.gun2 = pg.image.load(os.path.join(wpn_dir, "2.png")).convert()
         self.gun3 = pg.image.load(os.path.join(wpn_dir, "3.png")).convert()
@@ -21,10 +22,10 @@ class Weapon(AnimatedSprite):
         self.images = deque(
             [pg.transform.smoothscale(img, (self.image.get_width() * scale, self.image.get_height() * scale))
             for img in self.images])
-        self.weapon_pos = (HALF_WIDTH - self.images[1].get_width() // 2, HEIGHT - self.images[1].get_height())
+        self.weapon_pos = (HALF_WIDTH - self.images[0].get_width() // 2, HEIGHT - self.images[0].get_height())
 
     def draw(self):
-        self.game.screen.blit(self.images[1], self.weapon_pos)
+        self.game.screen.blit(self.images[0], self.weapon_pos)
 
 
     def update(self):
