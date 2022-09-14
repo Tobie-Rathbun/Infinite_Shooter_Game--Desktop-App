@@ -8,10 +8,10 @@ def resource_path(relative_path):
 
 sol_dir = resource_path("resources/sprites/npc/soldier")
 att_dir = resource_path("resources/sprites/npc/soldier/attack")
-att_dir = resource_path("resources/sprites/npc/soldier/death")
-att_dir = resource_path("resources/sprites/npc/soldier/idle")
-att_dir = resource_path("resources/sprites/npc/soldier/pain")
-att_dir = resource_path("resources/sprites/npc/soldier/walk")
+dth_dir = resource_path("resources/sprites/npc/soldier/death")
+idle_dir = resource_path("resources/sprites/npc/soldier/idle")
+pain_dir = resource_path("resources/sprites/npc/soldier/pain")
+walk_dir = resource_path("resources/sprites/npc/soldier/walk")
 
 class NPC(AnimatedSprite):
     def __init__(self, game, pos=(6,3.5), scale=.66, shift=0.4, animation_time=120):
@@ -19,6 +19,12 @@ class NPC(AnimatedSprite):
         self.image = pg.image.load(os.path.join(sol_dir, "0.png"))
         #2 attack, 9 death, 8 idle, 1 pain, 4 walk
         #self.attack_images = []
+        self.list = []
+        for x in range(8):
+            idle_img = pg.image.load(os.path.join(idle_dir, "{}.png".format(x)))
+            self.list.append(idle_img)
+        self.idle_images = self.get_images()
+
 
         self.attack_dist = randint(3, 6)
         self.speed = 0.03
@@ -32,3 +38,8 @@ class NPC(AnimatedSprite):
     def update(self):
         self.check_animation_time()
         self.get_sprite()
+        self.run_logic()
+
+    def run_logic(self):
+        if self.alive:
+            self.animate(self.idle_images)
