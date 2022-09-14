@@ -64,7 +64,7 @@ class SpriteObject:
 
 def get_image(sheet, frame, width, height):
         image = pg.Surface((width, height))
-        image.set_colorkey(BLACK)
+        image.set_colorkey(WHITE)
         image.blit(sheet, (0, 0), (frame * width, 0, width, height))
         return image
 
