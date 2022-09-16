@@ -14,4 +14,9 @@ class Sound:
         self.game = game
         pg.mixer.init()
         self.shotgun = pg.mixer.Sound(os.path.join(snd_dir, "shotgun.wav"))
+        self.npc_pain = pg.mixer.Sound(os.path.join(snd_dir, "npc_pain.wav"))
+        self.npc_death = pg.mixer.Sound(os.path.join(snd_dir, "npc_death.wav"))
+        self.npc_shot = pg.mixer.Sound(os.path.join(snd_dir, "npc_attack.wav"))
+        self.player_pain = pg.mixer.Sound(os.path.join(snd_dir, "player_pain.wav"))
+        self.theme = pg.mixer.Sound(os.path.join(snd_dir, "theme.mp3"))
         
