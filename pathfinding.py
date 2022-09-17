@@ -35,7 +35,7 @@ class PathFinding:
         return visited
 
     def get_next_nodes(self, x, y):
-        return [(x + dx, y + dy) for dx, dy in self.ways in self.ways if (x + dx, y + dy) not in self.game.map.world_map]
+        return [(x + dx, y + dy) for dx, dy in self.ways if (x + dx, y + dy) not in self.game.map.world_map]
 
     def get_graph(self):
         for y, row in enumerate(self.map):
