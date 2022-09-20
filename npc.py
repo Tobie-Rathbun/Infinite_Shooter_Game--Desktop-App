@@ -6,41 +6,49 @@ def resource_path(relative_path):
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path, relative_path)
 
-sol_dir = resource_path("resources/sprites/npc/soldier")
-att_dir = resource_path("resources/sprites/npc/soldier/attack")
-dth_dir = resource_path("resources/sprites/npc/soldier/death")
-idle_dir = resource_path("resources/sprites/npc/soldier/idle")
-pain_dir = resource_path("resources/sprites/npc/soldier/pain")
-walk_dir = resource_path("resources/sprites/npc/soldier/walk")
+
 
 class NPC(AnimatedSprite):
-    def __init__(self, game, pos=(6,3.5), scale=.66, shift=0.4, animation_time=420):
+    def __init__(self, game, path='resources/sprites/npc/soldier', pos=(6,3.5), scale=.66, shift=0.4, animation_time=420, al=2, dl=9, il=8, pl=1, wl=4):
         super().__init__(game, pos, scale, shift, animation_time)
+        sol_dir = resource_path(path)
+        att_dir = resource_path("{}/attack".format(path))
+        dth_dir = resource_path("{}/death".format(path))
+        idle_dir = resource_path("{}/idle".format(path))
+        pain_dir = resource_path("{}/pain".format(path))
+        walk_dir = resource_path("{}/walk".format(path))
+
         self.image = pg.image.load(os.path.join(sol_dir, "0.png"))
         #2 attack, 9 death, 8 idle, 1 pain, 4 walk
-        #self.attack_images = []
         self.list = []
-        for x in range(8):
-            idle_img = pg.image.load(os.path.join(idle_dir, "{}.png".format(x)))
-            self.list.append(idle_img)
-        self.idle_images = self.get_images()
-        self.list = [pg.image.load(os.path.join(pain_dir, "0.png"))]
-        self.pain_images = self.get_images()
+        for x in range(al):
+            att_img = pg.image.load(os.path.join(att_dir, "{}.png".format(x)))
+            self.list.append(att_img)
+        self.attack_images = self.get_images()
         self.list = []
-        for x in range(9):
+        for x in range(dl):
             dth_img = pg.image.load(os.path.join(dth_dir, "{}.png".format(x)))
             self.list.append(dth_img)
         self.death_images = self.get_images()
         self.list = []
-        for x in range(4):
+        for x in range(il):
+            idle_img = pg.image.load(os.path.join(idle_dir, "{}.png".format(x)))
+            self.list.append(idle_img)
+        self.idle_images = self.get_images()
+        self.list = []
+        if pl > 1:
+            for x in range(pl):
+                pain_img = pg.image.load(os.path.join(pain_dir, "{}.png".format(x)))
+        else:
+            pain_img = pg.image.load(os.path.join(pain_dir, "0.png"))
+        self.list.append(pain_img)
+        self.pain_images = self.get_images()
+        self.list = []
+        for x in range(wl):
             walk_img = pg.image.load(os.path.join(walk_dir, "{}.png".format(x)))
             self.list.append(walk_img)
         self.walk_images = self.get_images()
-        self.list = []
-        for x in range(2):
-            att_img = pg.image.load(os.path.join(att_dir, "{}.png".format(x)))
-            self.list.append(att_img)
-        self.attack_images = self.get_images()
+        
 
 
         self.attack_dist = randint(3, 6)
@@ -214,3 +222,25 @@ class NPC(AnimatedSprite):
         if self.ray_cast_player_npc():
             pg.draw.line(self.game.screen, 'orange', (100 * self.game.player.x, 100 * self.game.player.y),
                             (100 * self.x, 100 * self.y), 2)
+
+class SoldierNPC(NPC):
+    def __init__(self, game, path='resources/sprites/npc/soldier', pos=(6, 3.5), scale=0.66, shift=0.4, animation_time=420, al=2, dl=9, il=8, pl=1, wl=4):
+        super().__init__(game, path, pos, scale, shift, animation_time, al, dl, il, pl, wl)
+
+class CacoDemonNPC(NPC):
+    def __init__(self, game, path='resources/sprites/npc/caco_demon/', pos=(7, 3.5), scale=0.66, shift=0.4, animation_time=420, al=5, dl=5, il=8, pl=2, wl=3):
+        super().__init__(game, path, pos, scale, shift, animation_time, al, dl, il, pl, wl)
+        self.attack_dist = 1.0
+        self.health = 150
+        self.attack_damage = 25
+        self.speed = 0.05
+        self.accuracy = 0.35
+
+class CyberDemonNPC(NPC):
+    def __init__(self, game, path='resources/sprites/npc/cyber_demon/', pos=(8, 3.5), scale=0.66, shift=0.4, animation_time=420, al=2, dl=9, il=8, pl=2, wl=5):
+        super().__init__(game, path, pos, scale, shift, animation_time, al, dl, il, pl, wl)
+        self.attack_dist = 6
+        self.health = 200
+        self.attack_damage = 15
+        self.speed = 0.055
+        self.accuracy = 0.25
