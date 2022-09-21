@@ -55,6 +55,11 @@ class Map:
                     #    self.world_map[(i, j)] = self.f
                     self.world_map[(i, j)] = value
 
+    def update(self):
+        self.mini_map = self.game.map_generator.generate_map()
+        self.world_map = {}
+        self.get_map()
+
     def draw(self):
         #self.dq.rotate(-1)
         #self.f = self.dq[0]

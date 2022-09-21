@@ -19,7 +19,7 @@ class SpriteObject:
         self.game = game
         self.player = game.player
         self.x, self.y = pos
-        self.image = pg.image.load(os.path.join(sprite_dir, "shroom.png")).convert()
+        self.image = pg.image.load(os.path.join(sprite_dir, "shroom.png"))
         self.image.set_colorkey(WHITE)
         self.IMAGE_WIDTH = self.image.get_width()
         self.IMAGE_HALF_WIDTH = self.image.get_width() // 2
@@ -75,7 +75,7 @@ class AnimatedSprite(SpriteObject):
         self.animation_time_prev = pg.time.get_ticks()
         self.animation_trigger = False
 
-        self.spritesheet = pg.image.load(os.path.join(img_dir, "animated_torch.png")).convert()
+        self.spritesheet = pg.image.load(os.path.join(img_dir, "animated_torch.png"))
         self.torch0 = get_image(self.spritesheet, 0, 32, 64)
         self.torch1 = get_image(self.spritesheet, 1, 32, 64)
         self.torch2 = get_image(self.spritesheet, 2, 32, 64)

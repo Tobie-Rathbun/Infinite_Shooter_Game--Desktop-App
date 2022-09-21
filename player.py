@@ -2,6 +2,7 @@ from settings import *
 import pygame as pg
 import math
 from object_handler import *
+from map_generator import *
 
 class Player:
     def __init__(self, game):
@@ -92,13 +93,15 @@ class Player:
             self.progress_lvl = False
             self.x, self.y = PLAYER_POS
             self.round_number += 1
+            self.game.new_map(self.round_number)
+            self.angle = PLAYER_ANGLE
 
     def check_shroom(self, x, y):
         self.shroom_x, self.shroom_y = self.game.object_handler.shroom_pos
         diff_x = abs(x - self.shroom_x)
         diff_y = abs(y - self.shroom_y)
         #print(diff_x, diff_y) #debug
-        if diff_x < .75 and diff_y  < .75:
+        if diff_x < 1.15 and diff_y  < 1.15:
             #print('shroom!')
             #success screen, next level
             self.progress_lvl = True

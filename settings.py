@@ -2,7 +2,7 @@ import math
 # /// Settings for the Game ///
 
 #screen variables
-RES = WIDTH, HEIGHT = 1600, 900
+RES = WIDTH, HEIGHT = 1900, 1000
 HALF_WIDTH = WIDTH // 2
 HALF_HEIGHT = HEIGHT // 2
 FPS = 0
@@ -11,7 +11,7 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
 PLAYER_POS = 1.5, 1.5
-PLAYER_ANGLE = 0
+PLAYER_ANGLE = 45
 PLAYER_SPEED = 0.004
 PLAYER_ROT_SPEED = 0.002
 PLAYER_SIZE_SCALE = 60

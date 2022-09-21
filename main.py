@@ -36,9 +36,11 @@ class Game:
         self.object_handler = ObjectHandler(self)
         self.weapon = Weapon(self)
         self.sound = Sound(self)
-        self.pathfinding = PathFinding(self)
+        self.pathfinding = PathFinding(self, self.map.mini_map)
 
     def update(self):
+        self.map_generator.update()
+        self.map.update()
         self.player.update()
         self.raycasting.update()
         #self.static_sprite.update()
@@ -48,6 +50,13 @@ class Game:
         pg.display.flip()
         self.delta_time = self.clock.tick(FPS)
         pg.display.set_caption(f'{self.clock.get_fps() :.1f}')
+
+    def new_map(self, round):
+        self.map_generator.increase_map_size(round)
+        self.map_generator.update()
+        self.map.update()
+        self.pathfinding = PathFinding(self, self.map.mini_map)
+        self.object_handler = ObjectHandler(self)
 
     def draw(self):
         self.object_renderer.draw()

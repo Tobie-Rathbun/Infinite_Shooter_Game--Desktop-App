@@ -2,12 +2,11 @@
 class MapGenerator():
     def __init__(self, game):
         self.game = game
-        self.map_gen = []
-        self.map_size = (12, 12)
-        self.map_x, self.map_y = self.map_size
-        self.map_xs, self.map_ys = self.map_x - 1, self.map_y - 1
-        #self.generate_map()
         self._ = False
+        self.map_x, self.map_y = 12, 12
+        self.update()
+        #self.generate_map()
+        
 
     def generate_map(self):
         for row in range(self.map_y):
@@ -34,3 +33,11 @@ class MapGenerator():
 
         return(self.map_gen)
 
+    def increase_map_size(self, numb):
+        self.map_x = 12 + numb
+        self.map_y = 12 + numb
+
+    def update(self):
+        self.map_gen = []
+        self.map_xs, self.map_ys = self.map_x - 1, self.map_y - 1
+        self.generate_map()
