@@ -1,6 +1,7 @@
 from settings import *
 import pygame as pg
 import math
+from object_handler import *
 
 class Player:
     def __init__(self, game):
@@ -9,9 +10,11 @@ class Player:
         self.angle = PLAYER_ANGLE
         self.shot = False
         self.health = PLAYER_MAX_HEALTH
+        self.round_number = STARTING_ROUND
         self.rel = 0
         self.health_recovery_delay = 700
         self.time_prev = pg.time.get_ticks()
+        self.progress_lvl = False
 
     def recover_health(self):
         if self.check_health_recovery_delay() and self.health < PLAYER_MAX_HEALTH:
@@ -66,6 +69,7 @@ class Player:
             dy += speed_cos
 
         self.check_wall_collision(dx, dy)
+        self.check_shroom_collision()
 
         #if keys[pg.K_LEFT]:
         #    self.angle -= PLAYER_ROT_SPEED * self.game.delta_time
@@ -82,6 +86,27 @@ class Player:
             self.x += dx
         if self.check_wall(int(self.x), int(self.y + dy * scale)):
             self.y += dy
+
+    def next_round(self):
+        if self.progress_lvl:
+            self.progress_lvl = False
+            self.x, self.y = PLAYER_POS
+            self.round_number += 1
+
+    def check_shroom(self, x, y):
+        self.shroom_x, self.shroom_y = self.game.object_handler.shroom_pos
+        diff_x = abs(x - self.shroom_x)
+        diff_y = abs(y - self.shroom_y)
+        print(diff_x, diff_y)
+        if diff_x < .5 and diff_y  < .5:
+            #print('shroom!')
+            #success screen, next level
+            self.progress_lvl = True
+            #return (x, y)        
+
+    def check_shroom_collision(self):
+        self.check_shroom(int(self.x), int(self.y))
+        
 
     def draw(self):
         pg.draw.line(self.game.screen, 'yellow', (self.x *100, self.y * 100),
@@ -101,6 +126,7 @@ class Player:
         self.movement()
         self.mouse_control()
         self.recover_health()
+        self.next_round()
 
     @property
     def pos(self):

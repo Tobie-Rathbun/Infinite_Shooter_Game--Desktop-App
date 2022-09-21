@@ -38,6 +38,7 @@ class ObjectRenderer:
         self.draw_background()
         self.render_game_objects()
         self.draw_player_health()
+        self.draw_round_number()
 
     def game_over(self):
         self.screen.blit(self.game_over_image, (0, 0))
@@ -47,6 +48,12 @@ class ObjectRenderer:
         for i, char in enumerate(health):
             self.screen.blit(self.digits[char], (i * self.digit_size, 0))
         self.screen.blit(self.digits['10'], ((i + 1) * self.digit_size, 0))
+
+    def draw_round_number(self):
+        #code to draw round number that increases
+        round_num = str(self.game.player.round_number)
+        for i, char in enumerate(round_num):
+            self.screen.blit(self.digits[char], (i * self.digit_size, 150))
 
     def player_damage(self):
         self.screen.blit(self.blood_screen, (0, 0))
