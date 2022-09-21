@@ -26,6 +26,7 @@ class Game:
         self.new_game()
 
     def new_game(self):
+        self.map_generator = MapGenerator(self)
         self.map = Map(self)
         self.player = Player(self)
         self.object_renderer = ObjectRenderer(self)

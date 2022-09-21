@@ -1,5 +1,10 @@
 import pygame as pg
 from collections import deque
+from map_generator import *
+
+
+
+
 
 _ = False
 mini_map = [
@@ -31,7 +36,8 @@ mini_map = [
 class Map:
     def __init__(self, game):
         self.game = game
-        self.mini_map = mini_map
+        self.mini_map = self.game.map_generator.generate_map()
+        print(self.mini_map)
         #self.dq = deque()
         #self.portal = [2, 3, 4, 5]
         #for num in self.portal:

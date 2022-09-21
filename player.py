@@ -97,7 +97,7 @@ class Player:
         self.shroom_x, self.shroom_y = self.game.object_handler.shroom_pos
         diff_x = abs(x - self.shroom_x)
         diff_y = abs(y - self.shroom_y)
-        print(diff_x, diff_y)
+        #print(diff_x, diff_y) #debug
         if diff_x < .75 and diff_y  < .75:
             #print('shroom!')
             #success screen, next level

@@ -14,7 +14,7 @@ class Weapon(AnimatedSprite):
         super().__init__(game=game, scale=scale, shift=shift, animation_time=animation_time)
             #loads other classes init and runs
         self.gun0 = pg.image.load(os.path.join(wpn_dir, "0.png"))
-        print(self.gun0.get_at((0,0)))
+        #print(self.gun0.get_at((0,0))) #color removal debug
         self.gun0.set_colorkey(WHITE)
         self.gun1 = pg.image.load(os.path.join(wpn_dir, "1.png"))
         self.gun1.set_colorkey(WHITE)
