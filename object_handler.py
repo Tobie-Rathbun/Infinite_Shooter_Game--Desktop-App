@@ -45,8 +45,12 @@ class ObjectHandler:
         #add_sprite(AnimatedSprite(game, pos=(6.5, 6.5)))
         
         #npc map
-        for i in range(int(self.map_xs / 5)):
+        for i in range(int(self.map_xs / 7)):
             add_npc(CacoDemonNPC(game, pos=(int(self.map_xs - 2 - i), int(self.map_ys - 2))))
+        for i in range(int(self.map_xs / 17)):
+            add_npc(CyberDemonNPC(game, pos=(int(self.map_xs - 3 - i), int(self.map_ys - 2))))
+        for i in range(int(self.map_xs / 13)):
+            add_npc(SoldierNPC(game, pos=(int(self.map_xs - 4 - i), int(self.map_ys - 2))))
 
         #add_npc(NPC(game, pos=(6, 3.5)))
         #add_npc(NPC(game, pos=(11.5, 4.5)))
