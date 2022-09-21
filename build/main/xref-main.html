@@ -429,7 +429,7 @@ imported by:
   <a target="code" href="" type="text/plain"><tt>'org.python'</tt></a>
 <span class="moduletype">MissingModule</span>  <div class="import">
 imported by:
-    <a href="#copy">copy</a>
+    <a href="#pickle">pickle</a>
  &#8226;   <a href="#setuptools.sandbox">setuptools.sandbox</a>
  &#8226;   <a href="#xml.sax">xml.sax</a>
 
@@ -9622,6 +9622,7 @@ imported by:
  &#8226;   <a href="#lib2to3.btm_matcher">lib2to3.btm_matcher</a>
  &#8226;   <a href="#lib2to3.refactor">lib2to3.refactor</a>
  &#8226;   <a href="#main.py">main.py</a>
+ &#8226;   <a href="#map">map</a>
  &#8226;   <a href="#multiprocessing.heap">multiprocessing.heap</a>
  &#8226;   <a href="#multiprocessing.pool">multiprocessing.pool</a>
  &#8226;   <a href="#multiprocessing.queues">multiprocessing.queues</a>
@@ -9976,8 +9977,8 @@ imported by:
   <a target="code" href="///C:/Users/benja/AppData/Local/Programs/Python/Python310/lib/copy.py" type="text/plain"><tt>copy</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
-    <a href="#'org.python'">'org.python'</a>
- &#8226;   <a href="#copyreg">copyreg</a>
+    <a href="#copyreg">copyreg</a>
+ &#8226;   <a href="#org">org</a>
  &#8226;   <a href="#types">types</a>
  &#8226;   <a href="#weakref">weakref</a>
 
@@ -15759,12 +15760,27 @@ imported by:
   <a target="code" href="///C:/Users/benja/OneDrive/Desktop/all/Programming/Python/PyGame/Games/Raycasting%20Game/map.py" type="text/plain"><tt>map</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
-    <a href="#pygame">pygame</a>
+    <a href="#collections">collections</a>
+ &#8226;   <a href="#map_generator">map_generator</a>
+ &#8226;   <a href="#pygame">pygame</a>
 
   </div>
   <div class="import">
 imported by:
     <a href="#main.py">main.py</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="map_generator"></a>
+  <a target="code" href="///C:/Users/benja/OneDrive/Desktop/all/Programming/Python/PyGame/Games/Raycasting%20Game/map_generator.py" type="text/plain"><tt>map_generator</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imported by:
+    <a href="#map">map</a>
+ &#8226;   <a href="#object_handler">object_handler</a>
+ &#8226;   <a href="#player">player</a>
 
   </div>
 
@@ -21692,13 +21708,15 @@ imported by:
   <a target="code" href="///C:/Users/benja/OneDrive/Desktop/all/Programming/Python/PyGame/Games/Raycasting%20Game/object_handler.py" type="text/plain"><tt>object_handler</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
-    <a href="#npc">npc</a>
+    <a href="#map_generator">map_generator</a>
+ &#8226;   <a href="#npc">npc</a>
  &#8226;   <a href="#sprite_object">sprite_object</a>
 
   </div>
   <div class="import">
 imported by:
     <a href="#main.py">main.py</a>
+ &#8226;   <a href="#player">player</a>
 
   </div>
 
@@ -21837,7 +21855,7 @@ imported by:
   <a target="code" href="" type="text/plain"><tt>org</tt></a>
 <span class="moduletype">MissingModule</span>  <div class="import">
 imported by:
-    <a href="#pickle">pickle</a>
+    <a href="#copy">copy</a>
 
   </div>
 
@@ -22242,14 +22260,14 @@ imported by:
   <a target="code" href="///C:/Users/benja/AppData/Local/Programs/Python/Python310/lib/pickle.py" type="text/plain"><tt>pickle</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
-    <a href="#_compat_pickle">_compat_pickle</a>
+    <a href="#'org.python'">'org.python'</a>
+ &#8226;   <a href="#_compat_pickle">_compat_pickle</a>
  &#8226;   <a href="#_pickle">_pickle</a>
  &#8226;   <a href="#codecs">codecs</a>
  &#8226;   <a href="#copyreg">copyreg</a>
  &#8226;   <a href="#functools">functools</a>
  &#8226;   <a href="#io">io</a>
  &#8226;   <a href="#itertools">itertools</a>
- &#8226;   <a href="#org">org</a>
  &#8226;   <a href="#pprint">pprint</a>
  &#8226;   <a href="#re">re</a>
  &#8226;   <a href="#struct">struct</a>
@@ -22865,7 +22883,9 @@ imported by:
   <a target="code" href="///C:/Users/benja/OneDrive/Desktop/all/Programming/Python/PyGame/Games/Raycasting%20Game/player.py" type="text/plain"><tt>player</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
-    <a href="#math">math</a>
+    <a href="#map_generator">map_generator</a>
+ &#8226;   <a href="#math">math</a>
+ &#8226;   <a href="#object_handler">object_handler</a>
  &#8226;   <a href="#pygame">pygame</a>
  &#8226;   <a href="#settings">settings</a>
 
