@@ -1,20 +1,38 @@
 from telnetlib import WONT
 import pygame as pg
 from settings import *
+import sys, os
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
+txt_dir = resource_path("resources/textures")
+dig_dir = resource_path("resources/textures/digits")
 
 class ObjectRenderer:
     def __init__(self, game):
         self.game = game
         self.screen = game.screen
+
         self.wall_textures = self.load_wall_textures()
-        self.sky_image = self.get_texture('resources/textures/sky.png', (WIDTH, HALF_HEIGHT))
+
+        self.sky = pg.image.load(os.path.join(txt_dir, "sky.png"))
+        self.sky_image = self.scale_texture(self.sky, (WIDTH, HALF_HEIGHT))
         self.sky_offset = 0
-        self.blood_screen = self.get_texture('resources/textures/blood_screen.png', RES)
+
+        self.blood = pg.image.load(os.path.join(txt_dir, "blood_screen.png"))
+        self.blood_screen = self.scale_texture(self.blood, RES)
         self.digit_size = 90
-        self.digit_images = [self.get_texture(f'resources/textures/digits/{i}.png', [self.digit_size] * 2)
-                                    for i in range(11)]
+        self.all_digits = [pg.image.load(os.path.join(dig_dir, "{}.png".format(x))) for x in range(11)]
+        self.digit_images = []
+        for dig in self.all_digits:
+            digit = self.scale_texture(dig, [self.digit_size] * 2)
+            self.digit_images.append(digit)
         self.digits = dict(zip(map(str, range(11)), self.digit_images))
-        self.game_over_image = self.get_texture('resources/textures/game_over.png', RES)
+        self.game_over_img = pg.image.load(os.path.join(txt_dir, "game_over.png"))
+        self.game_over_image = self.scale_texture(self.game_over_img, RES)
 
     def draw(self):
         self.draw_background()
@@ -47,15 +65,15 @@ class ObjectRenderer:
 
         #loads the texture from the specified path and returns a scaled image
     @staticmethod
-    def get_texture(path, res=(TEXTURE_SIZE, TEXTURE_SIZE)):
-        texture = pg.image.load(path).convert_alpha()
+    def scale_texture(txtr, res=(TEXTURE_SIZE, TEXTURE_SIZE)):
+        texture = txtr
         return pg.transform.scale(texture, res)
 
     def load_wall_textures(self):
         return {
-            1: self.get_texture('resources/textures/1.png'),
-            2: self.get_texture('resources/textures/2.png'),
-            3: self.get_texture('resources/textures/3.png'),
-            4: self.get_texture('resources/textures/4.png'),
-            5: self.get_texture('resources/textures/5.png')
+            1: self.scale_texture(pg.image.load(os.path.join(txt_dir, "1.png"))),
+            2: self.scale_texture(pg.image.load(os.path.join(txt_dir, "2.png"))),
+            3: self.scale_texture(pg.image.load(os.path.join(txt_dir, "3.png"))),
+            4: self.scale_texture(pg.image.load(os.path.join(txt_dir, "4.png"))),
+            5: self.scale_texture(pg.image.load(os.path.join(txt_dir, "5.png"))),
         }

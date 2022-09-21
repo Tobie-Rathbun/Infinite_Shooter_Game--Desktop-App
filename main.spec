@@ -22,8 +22,10 @@ added_files = [
 ("resources/sprites/npc/cyber_demon/walk", "resources/sprites/npc/cyber_demon/walk"),
 ("resources/sprites/animated_sprites", "resources/sprites/animated_sprites"),
 ("resources/sprites/static_sprites", "resources/sprites/static_sprites"),
-("resources/sound", "resources/sound")
-
+("resources/sound", "resources/sound"),
+("resources/sprites/weapon/shotgun", "resources/sprites/weapon/shotgun"),
+("resources/textures", "resources/textures"),
+("resources/textures/digits", "resources/textures/digits")
 ]
 
 
