@@ -98,7 +98,7 @@ class Player:
         diff_x = abs(x - self.shroom_x)
         diff_y = abs(y - self.shroom_y)
         print(diff_x, diff_y)
-        if diff_x < .5 and diff_y  < .5:
+        if diff_x < .75 and diff_y  < .75:
             #print('shroom!')
             #success screen, next level
             self.progress_lvl = True
