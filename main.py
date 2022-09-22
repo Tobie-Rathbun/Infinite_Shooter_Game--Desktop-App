@@ -17,7 +17,7 @@ class Game:
     def __init__(self):
         pg.init()
         pg.mouse.set_visible(False)
-        self.screen = pg.display.set_mode(RES)
+        self.screen = pg.display.set_mode((RES), pg.FULLSCREEN)
         self.clock = pg.time.Clock()
         self.delta_time = 1
         self.global_trigger = False
@@ -78,11 +78,41 @@ class Game:
             self.player.single_fire_event(event)
 
     def run(self):
-        while True:
+        self.game_running = True
+        while self.game_running:
             self.check_events()
             self.update()
             self.draw()
 
+    def pre_game(self):
+        self.basicFont = pg.font.SysFont(None, 48)
+        self.screen.fill(BLACK)
+        self.text = self.basicFont.render("WSAD to walk, click to shoot!", True, WHITE)
+        self.text2 = self.basicFont.render("Press SPACE to play!", True, WHITE)
+        self.textRect, self.textRect2 = self.text.get_rect(), self.text2.get_rect()
+        self.textRect.centerx, self.textRect2.centerx = self.screen.get_rect().centerx, self.screen.get_rect().centerx
+        self.textRect.centery, self.textRect2.centery = self.screen.get_rect().centery / 3, self.screen.get_rect().centery / 1.5 
+        self.pregame = True
+        while self.pregame:
+            self.screen.blit(self.text,self.textRect)
+            self.screen.blit(self.text2,self.textRect2)
+            for event in pg.event.get():
+                if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
+                    pg.quit()
+                    sys.exit()
+                elif event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
+                    self.run()
+            pg.display.flip()
+
+    def post_game(self):
+        self.basicFont = pg.font.SysFont(None, 48)
+        self.screen.fill(BLACK)
+        self.text_box_contents = "You made it to round: " + str(self.player.round_number)
+        self.text = self.basicFont.render(self.text_box_contents, True, WHITE)
+        self.textRect = self.text.get_rect()
+        self.textRect.centerx = self.screen.get_rect().centerx
+        self.textRect.centery = self.screen.get_rect().centery / 2
+
 if __name__ == '__main__':
     game = Game()
-    game.run()
+    game.pre_game()

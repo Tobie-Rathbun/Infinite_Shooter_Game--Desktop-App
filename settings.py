@@ -2,7 +2,7 @@ import math
 # /// Settings for the Game ///
 
 #screen variables
-RES = WIDTH, HEIGHT = 1900, 1000
+RES = WIDTH, HEIGHT = 1920, 1080
 HALF_WIDTH = WIDTH // 2
 HALF_HEIGHT = HEIGHT // 2
 FPS = 0

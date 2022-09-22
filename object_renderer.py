@@ -35,6 +35,7 @@ class ObjectRenderer:
         self.game_over_image = self.scale_texture(self.game_over_img, RES)
 
     def draw(self):
+        self.screen.fill(BLACK)
         self.draw_background()
         self.render_game_objects()
         self.draw_player_health()

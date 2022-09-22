@@ -1,3 +1,4 @@
+import random
 
 class MapGenerator():
     def __init__(self, game):
@@ -19,10 +20,19 @@ class MapGenerator():
                 elif row < self.map_y:               #middle rows
                     if column == 0 or column == self.map_xs: #sides
                         row_list.append(1)
-                    elif column == self.map_x:
-                        row_list.append(1)
                     else:
                         row_list.append(self._)
+                        """
+                        self.choice = random.randrange(4)
+                        if self.choice == 0:
+                            row_list.append(1)
+                        elif self.choice == 1:
+                            row_list.append(2)
+                        elif self.choice == 2:
+                            row_list.append(self._)
+                        elif self.choice == 3:
+                            row_list.append(self._)
+                        """
                 else:
                     row_list.append(1)
             self.map_gen.append(row_list)
